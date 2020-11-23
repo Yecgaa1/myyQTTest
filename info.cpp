@@ -1,5 +1,5 @@
-#include "info.h"
-#include <fstream>
+#include "info.h" //自定义的头文件用""
+#include <fstream>//系统自带的头文件用<>
 #include <iostream>
 #include "string"
 using namespace std;
@@ -64,18 +64,18 @@ string Info::GetAddr() const
 }
 
 
-Info::Info()
-{
+//Info::Info()
+//{
 
 
-}
+//}
 
 
-Info::~Info()
-{
+//Info::~Info()
+//{
 
 
-}
+//}
 
 
 void Info::insert()
@@ -338,6 +338,7 @@ void Info::modify()
                 {
                     cout << "你要修改的是：1.姓名 2.电话 3.地址：";
                     cin >> ch2;
+
                     switch(ch2)
                     {
                         case '1':
@@ -506,5 +507,5 @@ void Info::interface() {
     printf("          |*    1添加 2查看 3删除 4搜索 5修改 6退出      *|\n");
     printf("          |***********************************************|\n");
 
-    ofstream out("afile.dat");
+    //ofstream out("123.txt");
 }

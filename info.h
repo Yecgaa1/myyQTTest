@@ -14,8 +14,8 @@ private:
     string tel;
     string addr;
 public:
-    Info();
-    ~Info();
+    //Info();
+    //~Info();
     static int count; //记录通讯录中的人数
     int GetId();
     void SetName();

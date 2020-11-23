@@ -1,7 +1,6 @@
 #include <c++/fstream>
 #include "info.h"
 
-
 int main()
 {
     Info s;
@@ -11,3 +10,4 @@ int main()
 
     return 0;
 }
+
