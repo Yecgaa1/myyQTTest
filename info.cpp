@@ -132,6 +132,7 @@ void Info::show()
         cout << "请按任意键退出" << endl;
         char ch;
         cin >> ch;
+
     }
 }
 
