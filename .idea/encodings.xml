@@ -3,5 +3,6 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/CMakeLists.txt" charset="GBK" />
     <file url="file://$PROJECT_DIR$/info.cpp" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/info.cpp.tmp" charset="GBK" />
   </component>
 </project>

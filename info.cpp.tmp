@@ -1,20 +1,56 @@
+
 #include "info.h"
 #include <fstream>
+#include <iostream>
+#include "string"
+using namespace std;
+char data[100];
+
+// 以写模式打开文件
+ofstream NAME("NAME.txt", ios::app);
+ofstream TEL("TEL.txt", ios::app);
+ofstream ADDR("ADDR.txt", ios::app);
+
 
 vector<Info> per;
 int Info::count = 0;
+
+void write_name(string name)
+{
+    NAME<<name<<endl;
+}
+
+void write_tel(string tel)
+{
+
+    TEL<<tel<<endl;
+}
+
+void write_addr(string addr)
+{
+
+    ADDR<<addr<<endl;
+}
+
 
 
 int Info::GetId()
 {
     return id;
+
 }
 
 
 void Info::SetName()
 {
     cout << "姓名：";
-    cin >> name;
+    getline(cin, name);
+    getline(cin, name);
+    //cin >> name;
+
+    write_name(name);
+
+
 }
 string Info::GetName() const
 {
@@ -26,7 +62,9 @@ string Info::GetName() const
 void Info::SetTel()
 {
     cout << "电话：";
-    cin >> tel;
+    getline(cin, tel);
+    //cin >> tel;
+    write_tel(tel);
 }
 string Info::GetTel() const
 {
@@ -38,19 +76,15 @@ string Info::GetTel() const
 void Info::SetAddr()
 {
     cout << "地址：";
-    cin >> addr;
+    getline(cin, addr);
+    //cin >> addr;
+    write_addr(addr);
 }
 string Info::GetAddr() const
 {
     string tmp = addr;
     return tmp;
 }
-
-
-
-
-
-
 
 void Info::insert()
 {
@@ -373,6 +407,7 @@ void Info::modify()
             cout << "修改成功!" << endl;
         }
         cout << "请按任意键退出" << endl;
+
         char ch3;
         cin >> ch3;
     }
@@ -388,32 +423,6 @@ void Info::exit_info()
     cin >> ch1;
     if (ch1 == 'y' || ch1 == 'Y')
     {
-        cout<<"正在保存数据";
-        ofstream fileId;
-        ofstream fileName;
-        ofstream fileTel;
-        ofstream fileAddr;
-        fileId.open("sql/id.txt");
-        fileName.open("sql/name.txt");
-        fileTel.open("sql/tel.txt");
-        fileAddr.open("sql/addr.txt");
-        vector<Info>::iterator i;
-        if(!per.empty())
-        for(i=per.begin();i != per.end();i++)
-        {
-            fileId<<i->id;
-            fileName<<i->name;
-            fileTel<<i->tel;
-            fileAddr<<i->addr;
-        }
-
-        fileId.close();
-        fileName.close();
-        fileTel.close();
-        fileAddr.close();
-        cout<<"保存数据完成";
-
-
         exit(1);
     }
 
@@ -425,7 +434,7 @@ void Info::choose()
 {
     char action;
     Info tmp;
-    cout << "请输入你要实现的功能(0-6)：" ;
+    cout << "请输入你要实现的功能(0-4)：" ;
     cin >> action;
 
 
@@ -482,36 +491,9 @@ void Info::choose()
 
 
 
-void Info::interface()
-{
+void Info::interface() {
     //system("clear");
-    cout<<"开始准备通讯录，读取上次的通讯录中";
-    ifstream fileId;
-    ifstream fileName;
-    ifstream fileTel;
-    ifstream fileAddr;
-    fileId.open("sql/id.txt");
-    fileName.open("sql/name.txt");
-    fileTel.open("sql/tel.txt");
-    fileAddr.open("sql/addr.txt");
 
-
-
-    Info tmp;
-    for(int i=0;fileId>>i;)
-    {
-        tmp.id=i;
-        fileName>>tmp.name;
-        fileTel>>tmp.tel;
-        fileAddr>>tmp.addr;
-        per.push_back(tmp);
-    }
-    fileId.close();
-    fileName.close();
-    fileTel.close();
-    fileAddr.close();
-
-    cout<<"读取成功";
 
     printf("\n");
     printf("\n");
@@ -531,6 +513,35 @@ void Info::interface()
     printf("          |*                                             *|\n");
     printf("          |*    1添加 2查看 3删除 4搜索 5修改 6退出      *|\n");
     printf("          |***********************************************|\n");
+
+
+    ifstream NAME("NAME.txt", ios::app);
+
+    vector<string> name;
+    //for(int a;NAME>>a; )
+        //{
+        //   name.push_back(a);
+       // }
+    //for(int i=0;i<name.size();++i)
+            //cout<<name[i]<<" ";    //需要包含#include<iostream>
+
+
+    ifstream TEL("TEL.txt", ios::app);
+    vector<string> tel;
+    ifstream ADDR("ADDR.txt", ios::app);
+    vector<string> addr;
+    cout << "Reading from the file" << endl;
+    //NAME >> name;
+    // cout << name << endl;
+    NAME.close();
+
+    //TEL>>tel;
+    //cout << tel<< endl;
+    TEL.close();
+
+    //ADDR>>addr;
+    //cout << addr<< endl;
+    ADDR.close();
 
 
 }
